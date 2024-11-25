@@ -1,10 +1,10 @@
 const PostModel = require("../models/posts_model");
 
 const getAllPosts = async (req, res) => {
-  const filter = req.query.owner;
+  const filter = req.query.sender;
   try {
     if (filter) {
-      const posts = await PostModel.find({ owner: filter });
+      const posts = await PostModel.find({ sender: filter });
       res.send(posts);
     } else {
       const posts = await PostModel.find();
@@ -40,9 +40,29 @@ const createPost = async (req, res) => {
   }
 };
 
-const deletePost = (req, res) => {
-  console.log("delete a post");
-  res.send("delete a post");
+const deletePost = async (req, res) => {
+  const postId = req.params.id;
+  try {
+    const deletedPost = await PostModel.deleteOne({ _id: postId });
+    res.status(201).send(deletedPost);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+const updatePost = async (req, res) => {
+  const postId = req.params.id;
+  const { content } = req.body;
+  try {
+    const updatedPost = await PostModel.findByIdAndUpdate(
+      postId,
+      { $set: { content } },
+      { new: true, runValidators: true }
+    );
+    res.status(201).send(updatedPost);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
 };
 
 module.exports = {
@@ -50,4 +70,5 @@ module.exports = {
   createPost,
   deletePost,
   getPostById,
+  updatePost,
 };

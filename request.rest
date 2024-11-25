@@ -5,11 +5,11 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts?owner=Eliav
+GET http://localhost:3000/posts?sender=Eliav
 
 ###
 
-GET http://localhost:3000/posts/6734b0c818a1cf8344804554
+GET http://localhost:3000/posts/6744cb211fc95a2a74d5b63c
 
 ###
 
@@ -18,10 +18,21 @@ Content-Type: application/json
 
 {
     "title": "Hello",
-    "owner": "Kevin",
+    "sender": "nadav",
     "content": "Hello World..."
 }
 
 ###
 
-DELETE http://localhost:3000/posts/6734b0c818a1cf8344804554
+DELETE http://localhost:3000/posts/6744cbf158f4fb9d6ee03c1b
+
+
+###
+PUT http://localhost:3000/posts/6744cb211fc95a2a74d5b63c
+Content-Type: application/json
+
+{   
+    "title": "Hello",
+    "sender": "Eliav",
+    "content": "Bey Bey Bey2"
+}
