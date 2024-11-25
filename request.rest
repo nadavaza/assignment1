@@ -5,11 +5,11 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts?sender=Eliav
+GET http://localhost:3000/posts?sender=nadav
 
 ###
 
-GET http://localhost:3000/posts/6744cb211fc95a2a74d5b63c
+GET http://localhost:3000/posts/6744d77d04aa1c98ac4f1340
 
 ###
 
@@ -24,15 +24,47 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/posts/6744cbf158f4fb9d6ee03c1b
+DELETE http://localhost:3000/posts/6744d77d04aa1c98ac4f1340
 
 
 ###
-PUT http://localhost:3000/posts/6744cb211fc95a2a74d5b63c
+PUT http://localhost:3000/posts/6744d77d04aa1c98ac4f1340
 Content-Type: application/json
 
 {   
     "title": "Hello",
-    "sender": "Eliav",
+    "sender": "nadav",
     "content": "Bey Bey Bey2"
 }
+
+###
+
+GET http://localhost:3000/comments
+
+###
+
+GET http://localhost:3000/comments/post/6744dd9f78f52373fe5641d9
+
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "writer": "Valeriya Levinson",
+    "content": "This is a great post!",
+    "postId": "6744dd9f78f52373fe5641d9"
+}
+
+###
+
+PUT http://localhost:3000/comments/6744de4f2437f942058018d0
+Content-Type: application/json
+
+{
+    "content": "Updated comment content!"
+}
+
+###
+
+DELETE http://localhost:3000/comments/6744de4f2437f942058018d0
